@@ -1,15 +1,20 @@
 #!/bin/bash
 
-# Output directory
-target="Targets/$1"
+# Check if the build type is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <build_type>"
+    echo "Available build types: Debug, Release, RelWithDebInfo, MinSizeRel"
+    exit 1
+fi
 
-# Activate Python environment (uncomment if needed)
-# source ~/python/bin/activate
+BUILD_TYPE="$1"
+TARGET_DIR="include" # Replace with your actual target directory
 
-# Install Conan dependencies
-conan install . --install-folder "$target" --build=missing -s build_type="$1" \
+conan install . -of="$TARGET_DIR" --build=missing -s build_type="$BUILD_TYPE" \
     -c tools.system.package_manager:sudo=True \
-    -c tools.system.package_manager:mode=install
+    -c tools.system.package_manager:mode=install \
+    -g CMakeToolchain -g CMakeDeps
+
 
 
 

@@ -1,0 +1,29 @@
+project(Engine)
+# gather all source files
+file(GLOB_RECURSE sources $
+{MAKE_CURRENT_SOURCE_DIR}/* cpp)
+file(GLOB_ RECURSE headers $
+{CMAKE_CURRENT_SOURCE_DIR}/*.h)
+add _library(${PROJECT_NAME} SHARED $
+{sources} ${headers})
+# export engine symbols
+target_compile_definitions${PROJECT_NAME}
+PUBLIC
+-DEMPY EXPORT
+)
+# includes directories
+target_include_directories(${PROJECT_NAME}
+PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}/includes
+S{CONAN_INCLUDE_DIRS}
+)
+# link directories
+target_link_directories(${PROJECT_NAME}
+PUBLIC
+${CONAN_ LIB_ DIRS}
+)
+# link libraries
+target_link_libraries(${PROJECT_NAME}
+PUBLIC
+${CONAN_LIBS}
+)

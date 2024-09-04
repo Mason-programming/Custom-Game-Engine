@@ -1,21 +1,28 @@
-project(Empy)
-
-# gather source files
-file(GLOB_RECURSE sources $
-{MAKE_CURRENT_SOURCE_DIR}/*.cpp)
-file(GLOB RECURSE headers $
-{MAKE_CURRENT_SOURCE_DIR}/*h)
-add_executable(${PROJECT_NAME) $(sources}
-§ (headers})
-
-# include directories
-target_include_directories${PROJECT_NAME}
-
-PRIVATE
-${CMAKE_CURRENT_SOURCE_DIR}/srC
-)
-# link libraries
-target_link_libraries(${PROJECT_NAME}
-PRIVATE
-Engine
-)
+make_minimum_required(VERSION 3.16
+FATAL_ERROR)
+# build output directories
+set(CMAKE_LIBRARY_OUTPUT_ DIRECTORY
+$<0:>${CMAKE BINARY_ DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
+$<0:>${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
+$<0:>${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_PDB_OUTPUT_ DIRECTORY $<0:>$
+{MAKE BINARY_ DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH $<0:>$
+{CMAKE BINARY_ DIR}/bin)
+# cp standard options
+set(CMAKE_CONFIGURATION_TYPES Debug
+Release)
+set(CMAKE_CXX STANDARD REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
+set(CMAKE_CXX_STANDARD 17)
+project(StarEngine)
+# enable console logging
+if(${CMAKE_BUILD_TYPE} MATCHES Debug)
+add definitions(-DEMPY ENABLE_LOG)
+endif0
+# project subdirectories
+add_subdirectory (StarEngine)
+add_subdirectory(EmpyEditor)
+add_subdirectory(EmpyGame)
